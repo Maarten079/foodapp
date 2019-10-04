@@ -1,10 +1,8 @@
 <?php
 
-/**
- * @todo implement api key reader
- */
 if(isset($_GET['recipe'])) {
-    $url = 'https://api.spoonacular.com/recipes/search?query='.$_GET['recipe'].'&number=2&apiKey=';
+    $str = file_get_contents("key.txt");
+    $url = 'https://api.spoonacular.com/recipes/search?query='.$_GET['recipe'].'&number=2&apiKey='.$str;
     $ch = curl_init($url);
 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
